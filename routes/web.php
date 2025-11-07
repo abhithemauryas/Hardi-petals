@@ -17,6 +17,11 @@ use App\Http\Controllers\TransformationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
+Route::controller(OrderController::class)->group(function(){
+    Route::get('/pay',  'createPayment')->name('payment.start');
+    Route::get('/payment-success',  'paymentSuccess')->name('payment.success');
+    Route::post('/payment-webhook',  'webhook')->name('payment.webhook');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -28,41 +33,66 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::post('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/coupon', [CartController::class, 'applyCoupon'])->name('cart.coupon');
+
 Route::post('/place-order', [OrderController::class, 'create'])->name('order.create');
 
 // CART ROUTES
+Route::view('/checkout', 'checkout')->name('checkout');
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
-Route::view('/checkout-success','checkout-success')->name('checkout.success');
+Route::get('/checkout-success', function () {
+    return view('checkout-success');
+})->name('checkout.success');
+
+
+// Route::get('/product/{id}', function ($id) {
+//     $product = \App\Models\Product::findOrFail($id);
+//     return view('03_product', compact('product'));
+// })->name('product.details');
+
+
 
 Route::get('/view/{name}', function($view){
     return view($view);
 })->name('view');
 
-Route::view('/checkout', 'checkout')->name('checkout');
-Route::view('02', '_shop')->name('_shop');
-Route::view('about','about')->name('about');
-Route::view('blog', 'blog')->name('blog');
-Route::view('contact','contact')->name('contact');
-Route::view('login','login')->name('login');
-Route::view('register','register')->name('register');
+Route::get('02', function () {
+    return view('_shop');
+})->name('_shop');
 
+// Route::get('shop/grid', [ProductController::class, 'publicProducts'])->name('products.index');
+
+Route::get('about', function () {
+    return view('about');
+})->name('about');
+// Blog listing
+Route::get('/blog', [BlogController::class, 'blogPage'])->name('blogweb');
+
+// Single blog by slug
+Route::get('/blog/{blog:slug}', [BlogController::class, 'blogSingle'])->name('blog.single');
+
+
+Route::get('contact', function () {
+    return view('contact');
+})->name('contact');
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 
+
+Route::get('login',function(){
+    return view('login');
+})->name('login');
+
+Route::get('register',function(){
+    return view('register');
+})->name('register');
 
 Route::controller(AuthController::class)->group(function(){
     Route::post('register','register')->name('register.post');
 });
 
 Route::controller(AuthController::class)->group(function(){
-    Route::get('login','showinForm')->name('login');
-    Route::post('login','login')->name('login.post');
-    Route::post('logout','logout')->name('logout');
-});
-
-Route::controller(OrderController::class)->group(function(){
-    Route::get('/pay',  'createPayment')->name('payment.start');
-    Route::get('/payment-success',  'paymentSuccess')->name('payment.success');
-    Route::post('/payment-webhook',  'webhook')->name('payment.webhook');
+     Route::get('login','showinForm')->name('login');
+     Route::post('login','login')->name('login.post');
+     Route::post('logout','logout')->name('logout');
 });
 
 

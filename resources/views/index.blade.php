@@ -187,7 +187,7 @@
                         <h3>Explore Our Latest Products</h3>
                     </div>
 
-                    <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s" data-uk-grid
+                    <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s home-products" data-uk-grid
                         data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 300">
 
                         @foreach ($products as $product)
@@ -204,14 +204,14 @@
 
                                 $imgSrc =
                                     $img['thumbnail'] ??
-                                    ($img['medium'] ?? ($img['original'] ?? 'img/default-product.jpg'));
+                                    ($img['medium'] ?? ($img['original'] ?? asset('img/default-product.jpg')));
                             @endphp
 
                             <div>
                                 <div class="product-card">
                                     <div class="product-card__box">
                                         <div class="product-card__media">
-                                            <img class="product-card__img" src="{{ asset($imgSrc) }}"
+                                            <img class="product-card__img" src="{{ $imgSrc }}"
                                                 alt="{{ $product->name }}" />
 
                                             {{-- Example "new" badge logic --}}
@@ -355,7 +355,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="section-newsletter__img"> <img src="{{asset('img/skincare.jpg')}}" alt="img-newsletter"></div>
+                    <div class="section-newsletter__img"> <img src="/img/img-newsletter.png" alt="img-newsletter"></div>
                 </div>
             </div>
         </div>
@@ -454,6 +454,44 @@
             </div>
         </div>
     </div> --}}
+
+   <div class="section-video-reviews">
+    <div class="uk-section-large uk-container">
+        <div class="section-title" 
+            data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-small; delay: 300">
+            <span style="color: #D4AF37;">Customer Feedback</span>
+            <h3>Video Reviews</h3>
+        </div>
+
+        <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-medium uk-flex-center"
+            data-uk-grid
+            data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 300">
+
+            <!-- Video 1 -->
+            <div>
+                <video controls muted autoplay loop class="review-video">
+                    <source src="/videos/review1.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Video 2 -->
+            <div>
+                <video controls muted autoplay loop class="review-video">
+                    <source src="/videos/review2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Video 3 -->
+            <div>
+                <video controls muted autoplay loop class="review-video">
+                    <source src="/videos/review3.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 
         <div class="section-new-arrivals section-news-and-posts">
