@@ -38,7 +38,7 @@
                             if (!empty($product->imageGallery) && isset($product->imageGallery[0])) {
                                 $decoded = json_decode($product->imageGallery[0], true);
                                 $image =
-                                    $decoded['thumbnail'] ?? ($decoded['medium'] ?? ($decoded['original'] ?? null));
+                                    $decoded['medium'] ?? ($decoded['original'] ?? ($decoded['thumbnail'] ?? null));
                             }
 
                             $firstImage = $image ?: asset('img/placeholder.png');
