@@ -13,6 +13,7 @@ use App\Notifications\OrderStatusChange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
+use Mollie\Laravel\Facades\Mollie;
 
 class OrderController extends Controller
 {
@@ -130,6 +131,52 @@ class OrderController extends Controller
         ]);
     }
 
-    
+    public function createPayment()
+    {
+        $amount = 10.00; // dynamic amount
+
+        $payment = Mollie::api()->payments->create([
+            "amount" => [
+                "currency" => "EUR",
+                "value" => number_format($amount, 2, '.', '') // required format
+            ],
+            "description" => "Order Payment",
+            "redirectUrl" => route('payment.success'),
+            "webhookUrl"  => route('payment.webhook'),
+        ]);
+
+        session()->put('payment_id', $payment->id);
+
+        return redirect($payment->getCheckoutUrl());
+    }
+
+    public function paymentSuccess(Request $request)
+    {
+        $paymentId = session()->get('payment_id');
+
+        $payment = Mollie::api()->payments->get($paymentId);
+
+        if ($payment->isPaid()) {
+            // ✅ Payment success
+            return "Payment Successful!";
+        }
+
+        return "Payment Failed or Pending";
+    }
+
+
+
+    // ✅ Mollie webhook (Handled by Mollie server)
+    public function webhook(Request $request)
+    {
+        $payment = Mollie::api()->payments->get($request->id);
+
+        if ($payment->isPaid()) {
+            // ✅ Update database order status
+            // Order::where('payment_id', $payment->id)->update(['status' => 'paid']);
+        }
+
+        return response()->json(['status' => 'ok']);
+    }
 
 }

@@ -204,14 +204,14 @@
 
                                 $imgSrc =
                                     $img['thumbnail'] ??
-                                    ($img['medium'] ?? ($img['original'] ?? asset('img/default-product.jpg')));
+                                    ($img['medium'] ?? ($img['original'] ?? 'img/default-product.jpg'));
                             @endphp
 
                             <div>
                                 <div class="product-card">
                                     <div class="product-card__box">
                                         <div class="product-card__media">
-                                            <img class="product-card__img" src="{{ $imgSrc }}"
+                                            <img class="product-card__img" src="{{ asset($imgSrc) }}"
                                                 alt="{{ $product->name }}" />
 
                                             {{-- Example "new" badge logic --}}
@@ -355,7 +355,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="section-newsletter__img"> <img src="/img/img-newsletter.png" alt="img-newsletter"></div>
+                    <div class="section-newsletter__img"> <img src="{{asset('img/skincare.jpg')}}" alt="img-newsletter"></div>
                 </div>
             </div>
         </div>
