@@ -130,7 +130,7 @@
                                 <label for="product-price" class="form-label">Price</label>
                                 <div class="input-group">
                                     <span class="input-group-text fs-20"><i class='bx bx-rupee'></i></span>
-                                    <input type="number" name="price" id="product-price" class="form-control" value="{{$product->price}}" required>
+                                    <input type="text" name="price" id="product-price" class="form-control" value="{{$product->price}}" required>
                                 </div>
                             </div>
                         </div>

@@ -15,15 +15,15 @@
                             <div class="uk-grid-small" data-uk-grid>
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">Full Name</label>
-                                    <input required type="text" name="name" class="uk-input" autocomplete="on">
+                                    <input required type="text" name="name" class="uk-input">
                                 </div>
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">Email</label>
-                                    <input required type="email" name="email" class="uk-input"  autocomplete="">
+                                    <input required type="email" name="email" class="uk-input">
                                 </div>
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">Phone</label>
-                                    <input required type="text" name="phone" class="uk-input"  autocomplete="">
+                                    <input required type="text" name="phone" class="uk-input">
                                 </div>
                                 <!-- <div class="uk-width-1-2">
                                     <label class="uk-form-label">Country</label>
@@ -31,19 +31,19 @@
                                 </div> -->
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">City</label>
-                                    <input required type="text" name="city" class="uk-input"  autocomplete="">
+                                    <input required type="text" name="city" class="uk-input">
                                 </div>
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">Postal Code</label>
-                                    <input required type="text" name="postal" class="uk-input"  autocomplete="">
+                                    <input required type="text" name="postal" class="uk-input">
                                 </div>
                                 <div class="uk-width-1-2">
                                     <label class="uk-form-label">Landmark (Optional)</label>
-                                    <input type="text" name="landmark" class="uk-input"  autocomplete="">
+                                    <input type="text" name="landmark" class="uk-input">
                                 </div>
                                 <div class="uk-width-1-1">
                                     <label class="uk-form-label">Full Address</label>
-                                    <textarea required name="address" class="uk-textarea" rows="3"  autocomplete=""></textarea>
+                                    <textarea required name="address" class="uk-textarea" rows="3"></textarea>
                                 </div>
                             </div>
                             <hr>

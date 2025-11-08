@@ -134,7 +134,7 @@
                     <?php $image = $product->imageGallery? json_decode($product->imageGallery[0])->original :
                     asset('storage/placeholder.png'); ?>
                     <a href="{{route('admin.products.edit',["product"=> $product->id] )}}">
-                        <img src="{{ $image }}?dfs" alt="" onerror=`this.src='{{ asset('storage/placeholder.png') }}'` class="img-fluid" >
+                        <img src="{{ asset($image) }}?dfs" alt="" onerror=`this.src='{{ asset('storage/placeholder.png') }}'` class="img-fluid" >
                     </a>
                     <div class="card-body bg-light-subtle rounded-bottom">
                         <a href="{{route('admin.products.edit',["product"=> $product->id] )}}" class="text-dark fw-medium fs-16">

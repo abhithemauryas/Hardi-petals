@@ -34,7 +34,7 @@
     <p class="info-value">{{ $address }}</p>
 
     <p class="info-title"> Ordered Products:</p>
-    <p class="info-value">{{ implode(', ', $orderedProducts) }}</p>
+    <p class="info-value">{{ implode(', ', collect($orderedProducts)->pluck('name')->toArray()) }}</p>
 
     <div class="footer">
         This is an automated message — please do not reply.

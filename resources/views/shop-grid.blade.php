@@ -4,7 +4,7 @@
     <main class="page-main">
         <div class="section-hero">
             <div class="section-hero__bg">
-                <img src="{{ asset('img/product-hero.png') }}" alt="home-hero">
+                <img src="{{ asset('img/img-about.png') }}?adsf" alt="home-hero">
             </div>
             <div class="section-hero__content"
                 data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
@@ -37,8 +37,7 @@
 
                             if (!empty($product->imageGallery) && isset($product->imageGallery[0])) {
                                 $decoded = json_decode($product->imageGallery[0], true);
-                                $image =
-                                    $decoded['medium'] ?? ($decoded['original'] ?? ($decoded['thumbnail'] ?? null));
+                                $image =  ($decoded['medium'] ?? ($decoded['original'] ?? null));
                             }
 
                             $firstImage = $image ?: asset('img/placeholder.png');

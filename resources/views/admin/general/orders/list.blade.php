@@ -170,7 +170,7 @@
                                 <td>
                                     <a href="#!" class="link-primary fw-medium">{{$order->name}}</a>
                                 </td>
-                                <td> ₹ {{$order->total}}</td>
+                                <td> € {{$order->total}}</td>
                                 <td> {{$order->payment_mode}}</td>
                                 <td> <span class="badge bg-light text-dark  px-2 py-1 fs-13">Unpaid</span></td>
                                 <td>{{ count($order->orderData) }}</td>
@@ -353,7 +353,7 @@
         $map = new stdClass;
         $names = new stdClass;
         foreach($products as $item) {
-            $map->{$item->id} = $item->imageGallery? json_decode($item->imageGallery[0])->medium : asset('storage/placeholder.png');
+            $map->{$item->id} = asset($item->imageGallery? json_decode($item->imageGallery[0])->medium : 'storage/placeholder.png');
             $names->{$item->id} = $item->name;
         }
     ?>
@@ -361,7 +361,7 @@
     var names = JSON.parse(`<?php echo json_encode($names) ?>`);
     function viewProducts( elem ) {
         const order = JSON.parse(elem.dataset.order);
-        $('.orderNumber').text(elem.dataset.ordernumber)
+        $('.orderNumber').text(elem.dataset.ordernumber);
         let htm = order.map( line => `<tr><td>${names[line.id]}</td><td><img height="50" src="${products[line.id]}"/></td><td>₹${line.price}</td></tr>`);
         $('tbody#contents').html(htm.toString())
         $('#recall').click()

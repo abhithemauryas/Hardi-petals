@@ -73,7 +73,7 @@
                     <div>
                         <div class="section-about__media _anim">
                             <div class="img-animate _anim _anim-no-repeat">
-                                <img src="/img/img-about.png" alt="Hardi Petals Products">
+                                <img src="{{asset('/img/img-about-alt.jpg')}}?sdaf" alt="Hardi Petals Products">
                             </div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
 
                         @foreach ($products as $product)
                             @php
-                                // extract gallery image from DB JSON array
+                            
                                 $gallery = [];
                                 if (!empty($product->imageGallery)) {
                                     foreach ($product->imageGallery as $g) {
@@ -201,17 +201,15 @@
                                 }
 
                                 $img = $gallery[0] ?? null;
-
-                                $imgSrc =
-                                    $img['thumbnail'] ??
-                                    ($img['medium'] ?? ($img['original'] ?? asset('img/default-product.jpg')));
+                                $imgSrc = $img['medium'] ?? 'img/default-product.jpg';
+                                
                             @endphp
 
                             <div>
                                 <div class="product-card">
                                     <div class="product-card__box">
                                         <div class="product-card__media">
-                                            <img class="product-card__img" src="{{ $imgSrc }}"
+                                            <img class="product-card__img" src="{{ asset($imgSrc) }}"
                                                 alt="{{ $product->name }}" />
 
                                             {{-- Example "new" badge logic --}}
@@ -355,7 +353,7 @@
                     </div>
                 </div>
                 <div>
-                    <div class="section-newsletter__img"> <img src="/img/img-newsletter.png" alt="img-newsletter"></div>
+                    <div class="section-newsletter__img"> <img src="{{asset('img/img-skincare-alt.jpg')}}?fs" alt="img-newsletter"></div>
                 </div>
             </div>
         </div>
@@ -418,81 +416,42 @@
             </div>
         </div>
 
-        {{-- <div class="section-reviews">
+        <div class="section-video-reviews">
         <div class="uk-section-large uk-container">
-            <div data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-small; delay: 300">
-                <div class="section-reviews__title">What Customers Saying</div>
-                <div class="uk-position-relative" tabindex="-1" data-uk-slider>
-                    <ul class="uk-slider-items uk-grid uk-child-width-1-1">
-                        <li>
-                            <blockquote>
-                                <p data-uk-slideshow-parallax="x: 300,-300">“I love these hair products! I have frizzy hair and am picky, but they're good for my hair and don't dry it out. I also love how wonderful they smell. It's a treat every time I wash my hair.“</p><cite
-                                    data-uk-slideshow-parallax="x: 200,-200">Aurora</cite>
-                            </blockquote>
-                        </li>
-                        <li>
-                            <blockquote>
-                                <p data-uk-slideshow-parallax="x: 300,-300">“
-                        I really love the hair mask and the oil it works really very good. And the smell is very nice“</p><cite
-                                    data-uk-slideshow-parallax="x: 200,-200">Ridhi</cite>
-                            </blockquote>
-                        </li>
-                        <li>
-                            <blockquote>
-                                <p data-uk-slideshow-parallax="x: 300,-300">“I've tried the shampoo, conditioner, and hair mask and I'm thrilled! They smell wonderful, condition my difficult, wavy hair well, and make my natural curls stand out beautifully, without frizz. It's great that they're vegan and effective. Definitely recommended!“</p><cite
-                                    data-uk-slideshow-parallax="x: 200,-200">Patty</cite>
-                            </blockquote>
-                        </li>
-                    </ul>
-                    <div class="uk-visible@m"><a class="uk-position-center-left" href="#" data-uk-slidenav-previous
-                            data-uk-slider-item="previous"></a><a class="uk-position-center-right" href="#"
-                            data-uk-slidenav-next data-uk-slider-item="next"></a></div>
-                    <div class="uk-hidden@m">
-                        <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-medium-top"></ul>
-                    </div>
+            <div class="section-title"
+                data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-small; delay: 300">
+                <span style="color: #D4AF37;">Customer Feedback</span>
+                <h3>Video Reviews</h3>
+            </div>
+
+            <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-medium uk-flex-center"
+                data-uk-grid
+                data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 300">
+
+                <!-- Video 1 -->
+                <div>
+                    <video controls muted autoplay loop class="review-video">
+                        <source src="/videos/review1.mp4" type="video/mp4">
+                    </video>
                 </div>
+
+                <!-- Video 2 -->
+                <div>
+                    <video controls muted autoplay loop class="review-video">
+                        <source src="/videos/review2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Video 3 -->
+                <div>
+                    <video controls muted autoplay loop class="review-video">
+                        <source src="/videos/review3.mp4" type="video/mp4">
+                    </video>
+                </div>
+
             </div>
-        </div>
-    </div> --}}
-
-   <div class="section-video-reviews">
-    <div class="uk-section-large uk-container">
-        <div class="section-title" 
-            data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-small; delay: 300">
-            <span style="color: #D4AF37;">Customer Feedback</span>
-            <h3>Video Reviews</h3>
-        </div>
-
-        <div class="uk-grid uk-child-width-1-3@m uk-child-width-1-2@s uk-grid-medium uk-flex-center"
-            data-uk-grid
-            data-uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 300">
-
-            <!-- Video 1 -->
-            <div>
-                <video controls muted autoplay loop class="review-video">
-                    <source src="/videos/review1.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <!-- Video 2 -->
-            <div>
-                <video controls muted autoplay loop class="review-video">
-                    <source src="/videos/review2.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <!-- Video 3 -->
-            <div>
-                <video controls muted autoplay loop class="review-video">
-                    <source src="/videos/review3.mp4" type="video/mp4">
-                </video>
-            </div>
-
         </div>
     </div>
-</div>
-
-
 
         <div class="section-new-arrivals section-news-and-posts">
             <div class="uk-background-muted">

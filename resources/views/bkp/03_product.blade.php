@@ -36,7 +36,7 @@
                                 @if (count($gallery) > 0)
                                     @foreach ($gallery as $img)
                                         <li>
-                                            <img src="{{ asset($img['original'] ?? $img['medium']) }}"
+                                            <img src="{{ $img['thumbnail'] ?? ($img['medium'] ?? $img['original']) }}"
                                                 alt="{{ $product->name }}">
                                         </li>
                                     @endforeach
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-
+                {{-- ✅ PRODUCT DETAILS --}}
                 <div class="uk-flex-first@l">
                     <div class="section-product-info__box">
                         <div class="section-product-info__content"
@@ -74,17 +74,17 @@
 
                             {{-- ✅ Product Price --}}
                             <div class="section-product-info__price">
-                                <sup>€</sup><span>{{ $product->price }}</span>
+                                <sup>$</sup><span>{{ $product->price }}</span>
                             </div>
 
                             {{-- ✅ Product Sizes (Example static) --}}
-                            {{-- <div class="section-product-info__size">
+                            <div class="section-product-info__size">
                                 <ul>
                                     <li><label><input type="radio" name="size"><span>75ml</span></label></li>
                                     <li><label><input type="radio" name="size" checked><span>150ml</span></label></li>
                                     <li><label><input type="radio" name="size"><span>200ml</span></label></li>
                                 </ul>
-                            </div> --}}
+                            </div>
 
                             {{-- ✅ Quantity + Add to Cart --}}
                             <div class="section-product-info__btns">
@@ -96,10 +96,14 @@
                                     <div class="jq-number__spin plus"></div>
                                 </div>
 
-                                <button class="uk-button uk-button-danger uk-button-large" id="addToBagBtn">
-                                    Add to bag
-                                </button>
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="qty" value="1">
 
+                                    <button class="uk-button uk-button-danger uk-button-large" type="submit">
+                                        Add to bag
+                                    </button>
+                                </form>
 
                             </div>
 
@@ -138,16 +142,17 @@
             <div class="uk-background-muted">
                 <div class="uk-section-large uk-container">
                     <div class="section-title"
-                        data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-small; delay: 500">
+                        data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500"><span>Best
+                            suiting & clothing</span>
                         <h3>Shop New Arrivals</h3>
                     </div>
-
                     <div class="section-content" data-uk-scrollspy="target: > *; cls: uk-animation-slide-bottom-medium">
-                        <div class="slider-outline" data-uk-slider="finite: true; sets: true">
+                        <div class="slider-outline" data-uk-slider>
                             <div class="uk-position-relative" tabindex="-1">
+                                <ul
+                                    class="uk-slider-items uk-grid uk-child-width-1-2@s
+uk-child-width-1-3@m uk-child-width-1-3@l">
 
-                                <ul class="uk-slider-items uk-grid uk-child-width-1-3@m uk-child-width-1-2@s home-products">
-                                    
                                     @foreach ($newArrivals as $p)
                                         @php
                                             $gallery = [];
@@ -157,45 +162,41 @@
                                                 }
                                             }
                                             $img = $gallery[0] ?? null;
-                                            $imgSrc = ($img['medium'] ??
-                                                    ($img['original'] ?? 'img/default-product.jpg'));
+                                            $imgSrc =
+                                                $img['thumbnail'] ??
+                                                ($img['medium'] ??
+                                                    ($img['original'] ?? asset('img/default-product.jpg')));
                                         @endphp
 
                                         <li>
                                             <div class="product-card">
                                                 <div class="product-card__box">
                                                     <div class="product-card__media">
-                                                        <img class="product-card__img" src="{{ asset($imgSrc) }}"
+                                                        <img class="product-card__img" src="{{ $imgSrc }}"
                                                             alt="{{ $p->name }}" />
 
                                                         <div class="product-card__btns">
                                                             <ul>
-                                                                <li>
-                                                                    <a href="javascript:void(0)" class="add-cart-btn"
-                                                                        data-id="{{ $p->id }}"
-                                                                        data-name="{{ $p->name }}"
-                                                                        data-price="{{ $p->price }}"
-                                                                        data-image="{{ $p->imageGallery[0] ?? '' }}">
-                                                                        <span>Add to cart</span>
-                                                                        <i class="fas fa-shopping-basket"></i>
-                                                                    </a>
-                                                                </li>
-
-                                                                <li>
-                                                                    <a href="#"><span>zoom</span>
-                                                                        <i class="fas fa-search-plus"></i>
-                                                                    </a>
-                                                                </li>
+                                                                <li><a href="#"><span>Add to cart</span><i
+                                                                            class="fas fa-shopping-basket"></i></a></li>
+                                                                <li><a href="#"><span>zoom</span><i
+                                                                            class="fas fa-search-plus"></i></a></li>
+                                                                <li><a href="#"><span>Add to wishlist</span><i
+                                                                            class="fas fa-heart"></i></a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
 
                                                     <div class="product-card__info">
                                                         <div class="product-card__title">
-                                                            <a href="{{ route('product.details', $p->id) }}">{{ $p->name }}</a>
-                                                            {{-- {!! $p->description !!} --}}
+                                                            <a
+                                                                href="{{ route('product.details', $p->id) }}">{{ $p->name }}</a>
+                                                            {{-- <span>{!! $p->description !!} </span> --}}
+                                                            <p>{!! Str::limit($p->description, 15) !!}</p>
+
+
                                                         </div>
-                                                        <div class="product-card__price">€ {{ $p->price }}</div>
+                                                        <div class="product-card__price">${{ $p->price }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -205,14 +206,13 @@
                                 </ul>
                             </div>
 
-                            {{-- <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-top"></ul> --}}
+                            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-top"></ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
-
         <div class="section-reviews uk-margin-large-bottom" id="reviews">
             <div class="uk-section-large uk-container">
                 <div data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 500">
@@ -252,69 +252,5 @@
                 </div>
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-
-                // ✅ Universal add-to-cart function
-                function addToCart(product) {
-
-                    let cart = JSON.parse(localStorage.getItem("cart_")) || {};
-
-                    if (!cart[product.id]) {
-                        cart[product.id] = {
-                            ...product,
-                            quantity: Number(product.quantity || 1)
-                        };
-                    } else {
-                        cart[product.id].quantity += Number(product.quantity || 1);
-                    }
-
-                    // ✅ Save cart
-                    localStorage.setItem("cart_", JSON.stringify(cart));
-
-                    // ✅ Notify the header counter
-                    window.dispatchEvent(new Event("cartUpdated"));
-
-                    notify.success("Product added to cart!");
-                }
-
-                // ✅ PAGE PRODUCT BUTTON LOGIC
-                const addBtn = document.getElementById("addToBagBtn");
-
-                if (addBtn) {
-                    addBtn.addEventListener("click", function() {
-
-                        let qty = document.querySelector(".jq-number__field input").value;
-
-                        let product = {
-                            id: {{ $product->id }},
-                            name: "{{ $product->name }}",
-                            price: {{ $product->price }},
-                            quantity: qty,
-                            image: "{{ asset($gallery[0]['thumbnail'] ?? ($gallery[0]['medium'] ?? ($gallery[0]['original'] ?? 'img/default-product.jpg'))) }}"
-                        };
-
-                        addToCart(product);
-                    });
-                }
-
-                // ✅ SLIDER BUTTON LOGIC
-                document.querySelectorAll('.add-cart-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        let product = {
-                            id: this.dataset.id,
-                            name: this.dataset.name,
-                            price: this.dataset.price,
-                            quantity: 1,
-                            image: this.dataset.image
-                        };
-                        addToCart(product);
-                    });
-                });
-
-            });
-        </script>
-
-
     </main>
 @endsection

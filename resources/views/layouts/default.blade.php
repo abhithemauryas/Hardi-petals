@@ -12,7 +12,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/libs.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}?sdakfh">
     <link rel="stylesheet" href="/css/showcase.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
@@ -28,10 +28,10 @@
         @include('layouts.footer')
     </div>
     @if(session('success'))
-        <div id="toast-message" data-message="{{ session('success') }}"></div>
+        <div id="toast-message" data-type='success' data-message="{{ session('success') }}"></div>
     @endif
     @if(session('error'))
-        <div id="toast-message" data-message="{{ session('error') }}"></div>
+        <div id="toast-message" data-type="error" data-message="{{ session('error') }}"></div>
     @endif
    <div id="toast-root"></div>
 

@@ -128,9 +128,11 @@
   document.addEventListener("DOMContentLoaded", function () {
 
     let cartData = JSON.parse(localStorage.getItem("cart_") ?? "{}");
-    console.log(cartData)
+
     updateCartCount();
     renderHeaderCart();
+    
+    var root = "{{asset('')}}";
 
     function updateCartCount() {
         let count = 0;
@@ -168,7 +170,7 @@
                     <div class="uk-grid-small uk-flex-middle" data-uk-grid>
                         <div class="uk-width-auto">
                             <img class="uk-border-circle" width="60" height="60"
-                            src="${p.image}" alt="${p.name}">
+                            src="${root+p.image}" alt="${p.name}">
                         </div>
                         <div class="uk-width-expand">
                             <h5 class="uk-margin-remove-bottom">${p.name}</h5>

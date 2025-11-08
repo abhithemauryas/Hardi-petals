@@ -85,9 +85,9 @@ class ProductController extends Controller
 
                 // $path = $image->store('products', 'public');
                 $images[] = json_encode([
-                    'original' => asset("storage/$originalPath"),
-                    'medium' => asset("storage/$mediumPath"),
-                    'thumbnail' => asset("storage/$thumbnailPath"),
+                    'original' => "storage/$originalPath",
+                    'medium' => "storage/$mediumPath",
+                    'thumbnail' => "storage/$thumbnailPath",
                 ]);
             }
             $product->imageGallery = $images;
@@ -155,9 +155,9 @@ class ProductController extends Controller
                 Storage::disk('public')->put($thumbnailPath, $thumbnail);
 
                 $images[] = json_encode([
-                    'original' => asset("storage/$originalPath"),
-                    'medium' => asset("storage/$mediumPath"),
-                    'thumbnail' => asset("storage/$thumbnailPath"),
+                    'original' => "storage/$originalPath",
+                    'medium' => "storage/$mediumPath",
+                    'thumbnail' => "storage/$thumbnailPath",
                 ]);
             }
             $product->imageGallery = $images;

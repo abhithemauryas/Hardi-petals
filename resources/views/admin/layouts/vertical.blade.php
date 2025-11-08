@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @include('admin.layouts.partials/title-meta', ['title' => $title])
+    @include('admin.layouts.partials/title-meta', ['title' => "Hardi-Petals"])
     @yield('css')
     @include('admin.layouts.partials/head-css')
     @vite(['resources/js/react.jsx'])

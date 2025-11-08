@@ -17,7 +17,7 @@
                             <ul class="uk-nav">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ route('about') }}">About Us</a></li>
-                                <li><a href="{{ route('_shop') }}">Shop</a></li>
+                                <li><a href="{{ url('products') }}">Shop</a></li>
                                 <li><a href="{{ route('contact') }}">Contact</a></li>
 
                             </ul>
@@ -56,15 +56,8 @@
 
                 <div class="page-footer__bottom">
                     <div class="copy">© {{ date('Y') }} — All rights reserved by Hardi Petals.</div>
-                    <!-- <div class="payments">
-                        <img src="{{ asset('img/payment-1.png') }}" alt="payment">
-                        <img src="{{ asset('img/payment-2.png') }}" alt="payment">
-                        <img src="{{ asset('img/payment-3.png') }}" alt="payment">
-                        <img src="{{ asset('img/payment-4.png') }}" alt="payment">
-                        <img src="{{ asset('img/payment-5.png') }}" alt="payment">
-                        <img src="{{ asset('img/payment-6.png') }}" alt="payment">
-                    </div> -->
                 </div>
+
             </div>
         </div>
     </div>
@@ -84,11 +77,11 @@
                 <div class="uk-margin">
                     <ul class="uk-nav uk-nav-default">
                         <li><a href="{{ url('/') }}">Home</a></li>
-                        <li><a href="{{ route('_shop') }}">Shop</a></li>
+                        <li><a href="{{ url('products') }}">Shop</a></li>
                         <li><a href="{{ route('about') }}">About</a></li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a href="{{ route('contact') }}">Contact</a></li>
-                        {{-- <li><a href="{{ route('login') }}">Login</a></li> --}}
+                    
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                          @else
@@ -125,7 +118,7 @@
     </div>
     <a href="https://wa.me/31657934327?text=Hello%20I%20want%20to%20know%20more%20about%20your%20services."
         class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <img src="{{ asset('img/whatsApp.svg.webp') }}" alt="WhatsApp" />
+        <img src="{{ asset('img/whatsApp.webp') }}" alt="WhatsApp" />
     </a>
 
 
