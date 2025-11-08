@@ -111,7 +111,7 @@
                         <!-- Hair Care -->
                         <div>
                             <div class="shop-categories-unit">
-                                <a class="shop-categories-unit__link" href="{{ route('_shop') }}">
+                                <a class="shop-categories-unit__link" href="{{ route('products.public') }}">
                                     <span class="shop-categories-unit__icon">
                                         <img src="/img/shop-categories-4.png" alt="Hair Care">
                                     </span>
@@ -135,7 +135,7 @@
                         <!-- Hair Oils -->
                         <div>
                             <div class="shop-categories-unit">
-                                <a class="shop-categories-unit__link" href="{{ route('_shop') }}">
+                                <a class="shop-categories-unit__link" href="{{ route('products.public') }}">
                                     <span class="shop-categories-unit__icon">
                                         <img src="/img/shop-categories-1.png" alt="Hair Oils">
                                     </span>
@@ -147,7 +147,7 @@
                         <!-- Hair Masks -->
                         <div>
                             <div class="shop-categories-unit">
-                                <a class="shop-categories-unit__link" href="{{ route('_shop') }}">
+                                <a class="shop-categories-unit__link" href="{{ route('products.public') }}">
                                     <span class="shop-categories-unit__icon">
                                         <img src="/img/shop-categories-5.png" alt="Hair Masks">
                                     </span>

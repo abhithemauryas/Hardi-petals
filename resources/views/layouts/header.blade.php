@@ -170,7 +170,7 @@
                     <div class="uk-grid-small uk-flex-middle" data-uk-grid>
                         <div class="uk-width-auto">
                             <img class="uk-border-circle" width="60" height="60"
-                            src="${root+p.image}" alt="${p.name}">
+                            src="${p.image.indexOf('http') !== -1 ? p.image : root + p.image}" alt="${p.name}">
                         </div>
                         <div class="uk-width-expand">
                             <h5 class="uk-margin-remove-bottom">${p.name}</h5>

@@ -215,17 +215,17 @@
                             <ul class="uk-slider-items uk-grid uk-child-width-1-1">
                                 <li>
                                     <blockquote>
-                                        <p data-uk-slideshow-parallax="x: 300,-300">“The right place to buy cosmetic products with luxury & stylish, - The unbeaten price & uncompromising quality.“</p><cite data-uk-slideshow-parallax="x: 200,-200">Sadia O’Conner, USA</cite>
+                                        <p data-uk-slideshow-parallax="x: 300,-300">“I really love the hair mask and the oil it works really very good. And the smell is very nice“</p><cite data-uk-slideshow-parallax="x: 200,-200">Ridhi</cite>
                                     </blockquote>
                                 </li>
                                 <li>
                                     <blockquote>
-                                        <p data-uk-slideshow-parallax="x: 300,-300">“The right place to buy cosmetic products with luxury & stylish, - The unbeaten price & uncompromising quality.“</p><cite data-uk-slideshow-parallax="x: 200,-200">Sadia O’Conner, USA</cite>
+                                        <p data-uk-slideshow-parallax="x: 300,-300">“The product is very nice and smells so good. Am enjoying a lot.“</p><cite data-uk-slideshow-parallax="x: 200,-200">Amrira</cite>
                                     </blockquote>
                                 </li>
                                 <li>
                                     <blockquote>
-                                        <p data-uk-slideshow-parallax="x: 300,-300">“The right place to buy cosmetic products with luxury & stylish, - The unbeaten price & uncompromising quality.“</p><cite data-uk-slideshow-parallax="x: 200,-200">Sadia O’Conner, USA</cite>
+                                        <p data-uk-slideshow-parallax="x: 300,-300">“Super excellent pure natural product!Feels softness smells good !A real treat 🥰👌“</p><cite data-uk-slideshow-parallax="x: 200,-200">Kash Hoeksma-Askrana</cite>
                                     </blockquote>
                                 </li>
                             </ul>
@@ -236,6 +236,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
+         </div>
         </main>
    @endsection

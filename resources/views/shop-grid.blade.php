@@ -15,7 +15,13 @@
             <div class="uk-section uk-margin-large-bottom uk-container">
 
                 <div class="filter-head">
-                    <div>SHOWING 1–6 OF 7 RESULTS</div>
+                    <div
+                        style="display:flex; align-items:center; gap:8px; margin:12px 0; font-weight:500; color:#333;font-size:18px;">
+                        {{-- <span style="font-size:18px;">✨</span>
+  <span></span> --}}
+                        ✨ Explore Our Best Picks
+                    </div>
+
                     <div>
                         <select class="js-select right" id="productSort">
                             <option value="">Sort By Popularity</option>
@@ -37,7 +43,7 @@
 
                             if (!empty($product->imageGallery) && isset($product->imageGallery[0])) {
                                 $decoded = json_decode($product->imageGallery[0], true);
-                                $image =  ($decoded['medium'] ?? ($decoded['original'] ?? null));
+                                $image = $decoded['medium'] ?? ($decoded['original'] ?? null);
                             }
 
                             $firstImage = $image ?: asset('img/placeholder.png');
@@ -93,8 +99,8 @@
                                                 <li><i class="fas fa-star"></i></li>
                                                 <li><i class="fas fa-star"></i></li>
                                                 <li><i class="fas fa-star"></i></li>
-                                                <li><i class="far fa-star"></i></li>
-                                                <li><i class="far fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
+                                                <li><i class="fas fa-star"></i></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -112,6 +118,46 @@
 
             </div>
         </div>
+        <div class="section-reviews">
+            <div class="uk-section-large uk-container">
+                <div data-uk-scrollspy="target: &gt; *; cls: uk-animation-slide-bottom-small; delay: 300">
+                    <div class="section-reviews__title">What Customers Saying</div>
+                    <div class="uk-position-relative" tabindex="-1" data-uk-slider>
+                        <ul class="uk-slider-items uk-grid uk-child-width-1-1">
+                            <li>
+                                <blockquote>
+                                    <p data-uk-slideshow-parallax="x: 300,-300">“I really love the hair mask and the oil it
+                                        works really very good. And the smell is very nice“</p><cite
+                                        data-uk-slideshow-parallax="x: 200,-200">Ridhi</cite>
+                                </blockquote>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p data-uk-slideshow-parallax="x: 300,-300">“The product is very nice and smells so
+                                        good. Am enjoying a lot.“</p><cite
+                                        data-uk-slideshow-parallax="x: 200,-200">Amrira</cite>
+                                </blockquote>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p data-uk-slideshow-parallax="x: 300,-300">“Super excellent pure natural product!Feels
+                                        softness smells good !A real treat 🥰👌“</p><cite
+                                        data-uk-slideshow-parallax="x: 200,-200">Kash Hoeksma-Askrana</cite>
+                                </blockquote>
+                            </li>
+                        </ul>
+                        <div class="uk-visible@m"><a class="uk-position-center-left" href="#"
+                                data-uk-slidenav-previous data-uk-slider-item="previous"></a><a
+                                class="uk-position-center-right" href="#" data-uk-slidenav-next
+                                data-uk-slider-item="next"></a></div>
+                        <div class="uk-hidden@m">
+                            <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin-medium-top"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <script>
         function addToCart(product) {

@@ -35,13 +35,13 @@ class OrderConfirmed extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Your Order Has Been Received')
+            ->subject('Your Order Has Been Confirmed')
             ->greeting('Hello ' . $this->order->name . '!')
-            ->line('Thank you for placing your order.')
-            ->line('We have received your order and our team is now preparing it.')
-            ->line('Order ID: ' . $this->order->id)
-            ->line('Total Amount: ' . number_format($this->order->total, 2))
-            ->line('We will notify you once your order is served.')
+            ->line('Thank you for shopping with us.')
+            ->line('We have received your order and our team is now processing it.')
+            // ->line('Order ID: ' . $this->order->id)
+            // ->line('Total Amount: €' . number_format($this->order->total, 2))
+            // ->line('We will notify you once your order is packed and ready for shipment/delivery.')
             ->salutation('Thank You,')
             ->markdown('emails.confirmed', [
                 'order' => $this->order,

@@ -115,23 +115,23 @@
             </div>
         </div>
 
-        <div class="section-product-desc">
-            <div class="uk-section-large uk-container uk-container-small">
-                <div class="section-product-desc__title section-product-desc__title_center">
-                    <ul>
-                        <li class="ankr-active">
-                            <div class="uk-h3">Description</div>
-                        </li>
-                        <li>
-                            <div class="uk-h3"><a href="#reviews" data-uk-scroll> Reviews</a></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="uk-text-center">
-                    <p>{!! $product->description !!}</p>
-                </div>
-            </div>
-        </div>
+  <div class="section-product-desc">
+  <div class="uk-section-large uk-container uk-container-small">
+    <div class="section-product-desc__title section-product-desc__title_center">
+      <ul>
+        <li class="ankr-active">
+          <div class="uk-h3">Description</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="product-description">
+      <p>{!! nl2br(e(strip_tags($product->description))) !!}</p>
+    </div>
+  </div>
+</div>
+
+
 
 
         <div class="section-new-arrivals">

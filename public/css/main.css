@@ -6327,7 +6327,25 @@ footer .social li a:hover {
     justify-content: left;
 }
 
-
+.product-description p strong {
+    background: linear-gradient(90deg, #d8b25a, #c0962f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.product-description p {
+    border-left: 3px solid #d4af37;
+    padding-left: 16px;
+    margin: 12px 0;
+    font-size: 19px;
+    line-height: 1.75;
+    color: #3a3a3a;
+    border-radius: 2px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+.product-description p:hover {
+    color: red;
+    transform: translateX(3px);
+}
 
 .section-product-desc__title ul li + li {
     margin-left: 70px;
@@ -8673,4 +8691,72 @@ body.page-about .slider-first-screen {
     border-radius: 10px;
     object-fit: cover;
     aspect-ratio: 9/16;
+}
+
+/* abhi header cart */
+/* === Mobile: Top dropdown === */
+@media (max-width: 768px) {
+
+  /* Force the dropdown to the top on mobile only */
+  .header-cart-icon .uk-drop,
+  .header-cart-icon [data-uk-drop] {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    bottom: auto !important;
+    transform: translateX(0) !important;
+    margin: 0 !important;
+    z-index: 99999 !important;
+    box-shadow: 0 6px 30px rgba(0,0,0,0.08) !important;
+    border-radius: 0 0 12px 12px !important;
+  }
+
+  /* Full width inner card */
+  .header-cart-icon .uk-drop .uk-card,
+  .header-cart-icon [data-uk-drop] .uk-card {
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 14px !important;
+    box-shadow: none !important;
+  }
+
+  /* Smaller images */
+  .header-cart-icon img {
+    width: 44px !important;
+    height: 44px !important;
+    object-fit: cover;
+  }
+
+  /* Stack buttons */
+  .header-cart-icon .uk-width-1-2.uk-grid-margin {
+    width: 100% !important;
+    margin-top: 8px !important;
+    display: block !important;
+  }
+
+  .header-cart-icon .uk-button {
+    width: 100% !important;
+  }
+}
+
+/* === Desktop: return original behavior === */
+@media (min-width: 769px) {
+
+  .header-cart-icon .uk-drop,
+  .header-cart-icon [data-uk-drop] {
+    position: absolute !important;
+    width: auto !important;
+    right: 0 !important;
+    transform: none !important;
+    border-radius: 6px !important;
+  }
+
+  .header-cart-icon .uk-drop .uk-card,
+  .header-cart-icon [data-uk-drop] .uk-card {
+    width: 280px !important;
+    border-radius: 4px !important;
+  }
 }
